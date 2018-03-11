@@ -6,9 +6,17 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     @base_title = "Ruby on Rails Tutorial Sample App"
   end
 
+  test "should get root" do
+    # 以下はGETリクエストを投げる
+    get root_url
+    # GETリクエストが成功することを確認
+    assert_response :success
+  end
+
   test "should get home" do
     get static_pages_home_url
     assert_response :success
+    # タイトルが右記の文字列に指定した通りであることを確認
     assert_select "title", "Home | #{@base_title}"
   end
 
